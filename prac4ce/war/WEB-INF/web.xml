@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<servlet>
+		<servlet-name>UniTable</servlet-name>
+		<servlet-class>ifmo.prac4ce.UnicodeTable</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UniTable</servlet-name>
+		<url-pattern>/unitable</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ListBudget</servlet-name>
+		<servlet-class>ifmo.prac4ce.ListBudget</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListBudget</servlet-name>
+		<url-pattern>/listbudget</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ColorTable</servlet-name>
+		<servlet-class>ifmo.colorlab.ColorTable</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ColorTable</servlet-name>
+		<url-pattern>/colortable</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NearTen</servlet-name>
+		<servlet-class>ifmo.prac3e.NearTen</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NearTen</servlet-name>
+		<url-pattern>/nearten</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SquareRoots</servlet-name>
+		<servlet-class>ifmo.prac3e.SquareRoots</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SquareRoots</servlet-name>
+		<url-pattern>/squaroots</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RandomArrays</servlet-name>
+		<servlet-class>ifmo.prac3e.RandomArrays</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RandomArrays</servlet-name>
+		<url-pattern>/randarr</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

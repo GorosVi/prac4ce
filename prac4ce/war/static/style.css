@@ -1,0 +1,108 @@
+.block{
+	width: 560px;
+	padding: 10px;
+	margin: 15px;
+}
+.block-item{
+	width: 20px;
+	height: 20px;
+	padding: 5px;
+	margin: 5px;
+	float: left;
+}
+.block-item-big{
+	width: 50px;
+	height: 50px;
+	padding: 5px;
+	margin: 5px;
+	float: left;
+}
+.block-clear{
+	clear: left;
+}
+.block{
+	background-color: #DCFFBE;
+}
+.BGcolor0,.block-item,.block-item-big{
+	background-color: #AEFD8C;
+}
+.BGcolor1{
+	background-color: #9EF230;
+}
+.BGcolor2{
+	background-color: #9AF280;
+}
+.BGcolor3{
+	background-color: #85FF6D;
+}
+.BGcolor4{
+	background-color: #6DFFAC;
+}
+.BGcolor5{
+	background-color: #31F974;
+}
+.BGcolor6{
+	background-color: #8BEF8B;
+}
+.BGcolor7{
+	background-color: #73F47B;
+}
+.BGcolor8{
+	background-color: #41F700;
+}
+.BGcolor9{
+	background-color: #B3F931;
+}
+
+
+.block-item-big > sub, #BudgeTable td{
+	color: #299E3F;
+}
+#colorlab > sub{
+	font-size: 8pt;
+	background-color: #AEFD8C;
+	padding: 1px;
+}
+
+
+.NumericInput{
+	width: 100px;
+}
+
+#header ul {
+	list-style: none;
+	padding: 5px;
+    	margin: 0px;
+}
+#header li + li {
+	padding-top: 10px;
+    	margin: 0px;
+}
+#changelog{
+	display: none;
+}
+
+#RandomArrayField > div{
+	margin: 0 auto;
+}
+
+#BudgetForm  ul{
+	list-style-type: decimal;
+}
+#BudgetForm  li{
+	padding-top: 3px;
+}
+#BudgeTable{
+	width: 100%;
+	height: 250px;
+}
+#BudgeTable, #BudgeTable td{
+	border: #299E3F 1px solid;
+	border-collapse: collapse;
+	padding: 7px;
+	text-align: left;
+	vertical-align: top;
+}
+#BudgeTable b{
+	color: #1D8230;
+}
