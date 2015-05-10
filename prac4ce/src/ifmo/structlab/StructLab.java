@@ -83,6 +83,8 @@ public class StructLab extends HttpServlet {
 					}
 				}
 			break;
+		case 4:
+			break;
 		default:
 			resp.getWriter().println("Error: incorrect mode!");
 		}
