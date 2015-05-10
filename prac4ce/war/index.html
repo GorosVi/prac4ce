@@ -112,6 +112,24 @@
 
 
 
+			$('#StruLabBtnHide').on('click',function(){
+				$('#StruLabField').html("");
+			});
+			$('#StruLabViewStats').on('click',function(){
+				$('#StruLabField').load( "/structlab?action=1");
+			});
+			$('#StruLabCallExams').on('click',function(){
+				$('#StruLabField').load( "/structlab?action=2");
+			});
+			$('#StruLabKillStudents').on('click',function(){
+				$('#StruLabField').load( "/structlab?action=3");
+			});
+			$('#StruLabCreDep').on('click',function(){
+				$('#StruLabField').load( "/structlab?action=0"+
+				                         "&dname="+$("#StruLabDepName").val());
+			});
+
+
 			var headerCollapsed = 1;
 			$('#header').on('click',function(){
 					if (headerCollapsed==1)
@@ -134,6 +152,10 @@
 			<div id="changelog" align="left">
 				<ul>
 					<li>
+						<b>10.05</b><br>
+						Added GoogleMap task solve
+					</li>
+					<li>
 						<b>04.05</b><br>
 						Bug fix on BudgetList: incorrect scaling of the last cell
 					</li>
@@ -149,6 +171,27 @@
 					</li>
 				</ul>
 			</div>
+		</div>
+
+
+		<div class="block" align="center" id="StruLabForm">
+			<h2>ClassesTest (quick'n'durty)</h2>
+			<form>
+				<input type="button" id="StruLabBtnHide" value="Скрыть!">
+				<br>
+				<br>
+				<input type="text" id="StruLabDepName" placeholder="Фаукультет">
+				<input type="button" id="StruLabCreDep" value="Create department">
+				<br>
+				<br>
+				<input type="button" id="StruLabCallExams" value="Pass Exams">
+				<input type="button" id="StruLabKillStudents" value="Kill non-passers">
+				<input type="button" id="StruLabViewStats" value="View stats">
+			</form>
+		</div>
+
+		<div class="block" align="center" id="StruLabField">
+			<!-- Empty! -->
 		</div>
 
 
@@ -253,6 +296,9 @@
 			<!-- Empty! -->
 		</div>
 
+		<div class="block" align="center" id="GMapLink">
+			<a href="/gmap.html"><h2>GoogleMap</h2></a>
+		</div>
 		<br>
 	</div>
 	</body>
