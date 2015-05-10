@@ -29,15 +29,15 @@ public class Department {
 	}
 	
 	public String getStats(){
-		String res = "Current department: "+name+"/n";
-		for (int i=groups.size()-1; i>=0; i--){
-			res += "Group :"+groups.get(i).name+"/n";
-				for (int j=groups.get(i).studentList.size()-1; j>=0; j--){
-					res += "Stdent :"+groups.get(i).studentList.get(j).name;
-					for (int k=groups.get(i).studentList.get(j).examResults.size()-1; k>=0; k--)
-						res += "Ex:" +groups.get(i).studentList.get(j).examResults.get(k).type.name+
-						       "has "+groups.get(i).studentList.get(j).examResults.get(k).qualification+
-						       "exams score"+"/n";
+		String res = "<br>Current department: "+name+"; "+getStudentsNumber()+" students <br>";
+		for (int i = groups.size()-1; i>=0; i--){
+			res += "Group: "+groups.get(i).name+"<br>";
+				for (int j = groups.get(i).studentList.size()-1; j>=0; j--){
+					res += "&nbsp;Stdent: "+groups.get(i).studentList.get(j).name+"<br>";
+					for (int k = groups.get(i).studentList.get(j).examResults.size()-1; k>=0; k--)
+						res += "&nbsp;&nbsp;Ex: " +groups.get(i).studentList.get(j).examResults.get(k).type.name+
+						       " has "+groups.get(i).studentList.get(j).examResults.get(k).qualification+
+						       " exams score"+"<br>";
 			}
 		}
 		return res;

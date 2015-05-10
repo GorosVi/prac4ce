@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<link rel="icon" href="static/favicon.ico">
+		<link rel="stylesheet" href="static/style.css">
+		<title>JS Practice</title>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		<style>
+		#map-canvas {
+			height: 350px;
+			width: 800px;
+			margin: 10px;
+			padding: 5px;
+			border: 2px #85FF6D solid;
+		}
+		</style>
+	</head>
+
+	
+	<script>
+		function initialize() {
+
+			var myLatlng = new google.maps.LatLng(48.006577, 131.443487);
+			var myLatlng2 = new google.maps.LatLng(45.335239, 37.44674);
+
+			var mapOptions = {
+				zoom : 2,
+				center : myLatlng
+			};
+
+			map = new google.maps.Map(document.getElementById('map-canvas'),
+					mapOptions);
+
+			var contentString  = 'Речка Енотовка';
+			var contentString2 = '<b> Гадючий </b> лиман';
+
+			createMarker(myLatlng, contentString, 'Енотовка');
+			createMarker(myLatlng2, contentString2, 'Гадючий лиман');
+
+			map.set('styles', [{
+				featureType: 'road',
+				elementType: 'geometry',
+				stylers: [
+					{ color: '#9EF230' },
+				]
+			},{
+				featureType: 'poi',
+				elementType: 'geometry',
+				stylers: [
+					{ color: '#85FF6D' },
+				]
+			},{
+				featureType: 'landscape',
+				elementType: 'geometry',
+				stylers: [
+					{ color: '#DCFFBE' },
+				]
+			},{
+				featureType: 'water',
+				elementType: 'geometry',
+				stylers: [
+					{ color: '#6DFFAC' },
+				]
+			}]);
+		}
+
+		function createMarker(myLatlng, contentString, mytitle) {
+			var infowindow = new google.maps.InfoWindow({
+				content : contentString
+			});
+			var marker = new google.maps.Marker({
+				position : myLatlng,
+				map : map,
+				title : mytitle,
+				icon : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/\
+				        9hAAABGklEQVQ4T42T4TVDcQxHbzewASbABGUCbKATqAmwgU7ACEyACegEjNANOP\
+				        edpCfileac9+Wf5JfkJm/Cb9sDLoFj4Cjc78AzsAA+a8qk5d9Fcj6n/6vEGXPVA3\
+				        aAe+CsCY4JGPIQIqsM6JWfAN9eQlDhOTAtBW6BGwWs7oy74ZxFhRE8XESn+pZyqg\
+				        yEJzjb+8sUsbMBpgI+PAKrfxK7286nCiRhRc63FDH2NDuoK+pr3aS3zjFBgAcReV\
+				        LIb0qWk0c1gFSgrnCbMQSY61woIP2PUm6/n2vxHQJvNbYf0nAcIepYHpTmIVnZTe\
+				        m/jv9iXqE5item1TazoG8y0hTxG+6gW1YYg5gdrn1jAjKxE+dNWK+xLbv88Tt/A3\
+				        RBOe7aydWQAAAAAElFTkSuQmCC"
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, marker);
+			});
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+
+	<body>
+	<div align="center">
+		<br>
+		<h1>Google map test</h1>
+		<div id="map-canvas">
+			
+		</div>
+	</div>
+	</body>
+
+</html>

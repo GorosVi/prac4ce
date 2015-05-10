@@ -23,7 +23,7 @@ public class Student {
 		return passedExamList;
 	}
 	
-	public void AddExamPoint(ExamType exT, int qual){
+	public void addExamPoint(ExamType exT, int qual){
 		// if not in group = error - not implemented
 		int isModified = 0;
 		// if existing = modify
@@ -41,11 +41,11 @@ public class Student {
 	}
 
 	public String getStats(){
-		String res = ("Student: "+name+"/n");
+		String res = ("<br>Student: "+name+"<br>");
 			for (int k=examResults.size()-1; k>=0; k--)
-				res += "Ex:" +examResults.get(k).type.name+
-				       "has "+examResults.get(k).qualification+
-				       "exams score"+"/n";
+				res += "Ex: " +examResults.get(k).type.name+
+				       " has "+examResults.get(k).qualification+
+				       " exams score"+"<br>";
 		return res;
 	}	
 }

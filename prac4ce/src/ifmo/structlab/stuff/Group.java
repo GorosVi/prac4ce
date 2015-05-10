@@ -38,18 +38,18 @@ public class Group {
 	}
 	
 	public void killStudent(Student trgtStud){
-		System.out.println("We was kill "+name);
+		//System.out.println("We was kill "+name);
 		studentList.remove(trgtStud);
 	}
 
 	public String getStats(){
-		String res = ("Current group: "+name+"/n");
+		String res = ("<br>Current group: "+name+"<br>");
 			for (int j=studentList.size()-1; j>=0; j--){
-				res += "Stdent :"+studentList.get(j).name+"/n";
+				res += "Stdent: "+studentList.get(j).name+"<br>";
 				for (int k=studentList.get(j).examResults.size()-1; k>=0; k--)
-					res += "Ex:" +studentList.get(j).examResults.get(k).type.name+
-					       "has "+studentList.get(j).examResults.get(k).qualification+
-					       "exams score"+"/n";
+					res += "&nbsp;Ex: " +studentList.get(j).examResults.get(k).type.name+
+					       " has "+studentList.get(j).examResults.get(k).qualification+
+					       " exams score"+"<br>";
 		}
 		return res;
 	}
