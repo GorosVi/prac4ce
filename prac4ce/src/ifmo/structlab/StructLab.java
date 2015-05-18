@@ -16,20 +16,16 @@ public class StructLab extends HttpServlet {
 			throws IOException {
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding("UTF-8");
-		
+
 		int action;
 		try{
-			action=Integer.parseInt(req.getParameter("action")); 
+			action=Integer.parseInt(req.getParameter("action"));
 		}
 		catch(NumberFormatException e){
 			resp.getWriter().println("Incorrect input value(s)");
 			return;
 		}
-		if ((action < 0)||(action > 3)){
-			resp.getWriter().println("Error: incorrect mode!");
-		}
-				
-		
+
 		switch (action) {
 		case 0:
 			String depName = req.getParameter("dname");
@@ -58,17 +54,17 @@ public class StructLab extends HttpServlet {
 					for (int k=depList.get(i).groups.get(j).studentList.size()-1; k>=0; k--){
 						for (int l=depList.get(i).groups.get(j).examList.size()-1; l>=0; l--){
 							int qual=0;
-							if (Math.random()>0.8){ // ÕÛ ÌÂ Ò‰‡Î, ·˚‚‡ÂÚ
+							if (Math.random()>0.8){ // –ù—É –Ω–µ —Å–¥–∞–ª, –±—ã–≤–∞–µ—Ç
 								qual=10+(int)(Math.random()*50);
 								resp.getWriter().println(depList.get(i).groups.get(j).studentList.get(k).name+
 								      " not pass the exam "+depList.get(i).groups.get(j).examList.get(l).name+"<br>");
 							}
-							else // —‰‡Î.
-								qual=60+(int)(Math.random()*40);	
+							else // –°–¥–∞–ª.
+								qual=60+(int)(Math.random()*40);
 							depList.get(i).groups.get(j).studentList.get(k).addExamPoint(depList.get(i).groups.get(j).examList.get(l), qual);
 						}
 					}
-			
+
 			break;
 		case 3: // Kill unpassers
 			for (int i=depList.size()-1; i>=0; i--)

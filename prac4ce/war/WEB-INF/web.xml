@@ -59,7 +59,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RandomArrays</servlet-name>
 		<url-pattern>/randarr</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>StructureLab</servlet-name>
 		<servlet-class>ifmo.structlab.StructLab</servlet-class>
@@ -68,7 +68,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StructureLab</servlet-name>
 		<url-pattern>/structlab</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet>
+		<servlet-name>WordLab</servlet-name>
+		<servlet-class>ifmo.wordlab.WordLabServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WordLab</servlet-name>
+		<url-pattern>/wordlab</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

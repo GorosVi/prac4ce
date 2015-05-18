@@ -126,8 +126,21 @@
 			});
 			$('#StruLabCreDep').on('click',function(){
 				$('#StruLabField').load( "/structlab?action=0"+
-				                         "&dname="+$("#StruLabDepName").val());
+				                         "&dname="+encodeURI($("#StruLabDepName").val()));
 			});
+
+
+			$('#WordLabBtnHide').on('click',function(){
+				$('#WordLabField').html("");
+			});
+			$('#WordLabGetQuestion').on('click',function(){
+				$('#WordLabField').load( "/wordlab");
+			});
+			$('#WordAnswerBtn').on('click',function(){
+				$('#WordLabField').load( "/wordlab?"+
+				                         "answer="+$("#WordAnswer").val());
+			});
+
 
 
 			var headerCollapsed = 1;
@@ -152,8 +165,12 @@
 			<div id="changelog" align="left">
 				<ul>
 					<li>
+						<b>18.05</b><br>
+						Added exceptions task solve (WordLab)
+					</li>
+					<li>
 						<b>10.05</b><br>
-						Added Classes task solve
+						Added Classes task solve<br>
 						Added GoogleMap task solve
 					</li>
 					<li>
@@ -175,6 +192,21 @@
 		</div>
 
 
+		<!-- Practice #5 - to 18.05.15 -->
+		<div class="block" align="center" id="WordLabForm">
+			<h2>WordLab</h2>
+			<form>
+				<input type="button" id="WordLabGetQuestion" value="Запросить вопрос">
+				<input type="button" id="WordLabBtnHide"     value="Скрыть!">
+				<input type="button" id="WordAnswerBtn"      value="Проверить!">
+			</form>
+		</div>
+
+		<div class="block" align="center" id="WordLabField">
+			<!-- Empty! -->
+		</div>
+
+		<!-- Empty! -->
 		<div class="block" align="center" id="StruLabForm">
 			<h2>Симулятор деканата (MVP)</h2>
 			<form>
