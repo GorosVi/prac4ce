@@ -77,6 +77,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>WordLab</servlet-name>
 		<url-pattern>/wordlab</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OpenData</servlet-name>
+		<servlet-class>ifmo.opendata.DataWorkerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OpenData</servlet-name>
+		<url-pattern>/opendata</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
