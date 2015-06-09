@@ -1,341 +1,404 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 
-
-
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
 		<link rel="icon" href="static/favicon.ico">
 		<link rel="stylesheet" href="static/style.css">
 		<script type="text/javascript" src="static/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="static/jquery-index-bind.js"></script>
 		<title>Java Practice</title>
 	</head>
 
-
-
-	<script>
-		$(document).ready(function() {
-			$('#UniTableBtn').on('click',function(){
-				$('#UniTable').load( "/unitable?"+
-				                      "min="+$("#UniMin").val()+
-				                     "&max="+$("#UniMax").val());
-			});
-			$('#UniTableBtnAdData').on('click',function(){
-				$('#UniTable').load( "/unitable?"+
-				                      "min="+$("#UniMin").val()+
-				                     "&max="+$("#UniMax").val()+
-				                     "&extmode=true");
-			});
-			$('#UniTableBtnHide').on('click',function(){
-				$('#UniTable').html("");
-			});
-
-
-
-			var MaxCellID = 0;
-			$('#BuBtnAdd').on('click',function(){
-				MaxCellID++;
-				$('#BudgetList').append("\
-					<li>\
-					<input type=\"text\" id=\"BuDesc"+MaxCellID+"\" placeholder=\"Статья\">\ &nbsp;\
-					<input type=\"text\" id=\"BudSum"+MaxCellID+"\" placeholder=\"Сумма\">\
-					</li>"
-				);
-			});
-			$('#BuBtnCalc').on('click',function(){
-				var Request = "Count="+MaxCellID;
-				for (Count = 0; Count <= MaxCellID; Count++){
-					Request += "&Desc"+Count+"="+$('#BuDesc'+Count).val();
-					Request += "&Sum" +Count+"="+$('#BudSum'+Count).val();
-				}
-				$('#ListBudget').load("/listbudget?"+Request);
-			});
-			$('#BuBtnHide').on('click',function(){
-				$('#ListBudget').html("");
-			});
-			$('#BuBtnReset').on('click',function(){
-				MaxCellID = 0;
-				$('#BudgetList').html("\
-					<li>\
-					<input type=\"text\" id=\"BuDesc0\" placeholder=\"Статья\">\
-					&nbsp;\
-					<input type=\"text\" id=\"BudSum0\" placeholder=\"Сумма\">\
-					</li>"
-				);
-			});
-
-
-
-			$('#ColorTableBtn').on('click',function(){
-				$('#ColorTable').load( "/colortable?"+
-				                      "min="+$("#ColorMin").val()+
-				                     "&max="+$("#ColorMax").val());
-			});
-			$('#ColorTableBtnHide').on('click',function(){
-				$('#ColorTable').html("");
-			});
-
-
-
-			$('#NearTenBtn').on('click',function(){
-				$('#NearTenField').load( "/nearten?"+
-				                         "M="+$("#NearTenM").val()+
-				                        "&N="+$("#NearTenN").val());
-			});
-			$('#NearTenBtnHide').on('click',function(){
-				$('#NearTenField').html("");
-			});
-
-
-
-			$('#SquareRootsBtn').on('click',function(){
-				$('#SquareRootsField').load( "/squaroots?"+
-				                         "A="+$("#SquareRootsA").val()+
-				                        "&B="+$("#SquareRootsB").val()+
-				                        "&C="+$("#SquareRootsC").val());
-			});
-			$('#SquareRootsBtnHide').on('click',function(){
-				$('#SquareRootsField').html("");
-			});
-
-
-
-			$('#RandomArrayBtn').on('click',function(){
-				$('#RandomArrayField').load( "/randarr");
-			});
-			$('#RandomArrayBtn2').on('click',function(){
-				$('#RandomArrayField').load( "/randarr?extmode=true");
-			});
-			$('#RandomArrayBtnHide').on('click',function(){
-				$('#RandomArrayField').html("");
-			});
-
-
-
-			$('#StruLabBtnHide').on('click',function(){
-				$('#StruLabField').html("");
-			});
-			$('#StruLabViewStats').on('click',function(){
-				$('#StruLabField').load( "/structlab?action=1");
-			});
-			$('#StruLabCallExams').on('click',function(){
-				$('#StruLabField').load( "/structlab?action=2");
-			});
-			$('#StruLabKillStudents').on('click',function(){
-				$('#StruLabField').load( "/structlab?action=3");
-			});
-			$('#StruLabCreDep').on('click',function(){
-				$('#StruLabField').load( "/structlab?action=0"+
-				                         "&dname="+encodeURI($("#StruLabDepName").val()));
-			});
-
-
-			$('#WordLabBtnHide').on('click',function(){
-				$('#WordLabField').html("");
-			});
-			$('#WordLabGetQuestion').on('click',function(){
-				$('#WordLabField').load( "/wordlab");
-			});
-			$('#WordAnswerBtn').on('click',function(){
-				$('#WordLabField').load( "/wordlab?"+
-				                         "answer="+$("#WordAnswer").val());
-			});
-
-
-
-			var headerCollapsed = 1;
-			$('#header').on('click',function(){
-					if (headerCollapsed==1)
-						$('#changelog').show();
-					else
-						$('#changelog').hide();
-					headerCollapsed ^= 1;
-			});
-		});
-	</script>
-
-
-
 	<body>
-	<div align="center">
-		<br>
-		<h1>JavaPractice</h1>
-
-		<div class="block" id="header" align="center">
-			<div id="changelog" align="left">
-				<ul>
-					<li>
-						<b>18.05</b><br>
-						Added exceptions task solve (WordLab)
-					</li>
-					<li>
-						<b>10.05</b><br>
-						Added Classes task solve<br>
-						Added GoogleMap task solve
-					</li>
-					<li>
-						<b>04.05</b><br>
-						Bug fix on BudgetList: incorrect scaling of the last cell
-					</li>
-					<li>
-						<b>28.04</b><br>
-						Bug fix on BudgetList: incorrect calculation of row height <br>
-						Added Color Table lab <br>
-						Added practice #3 tasks
-					</li>
-					<li>
-						<b>27.04</b><br>
-						Released tasks UnicodeTable and Budget for practice #4
-					</li>
-				</ul>
+		<header>
+			<div class="heading">
+				<a href="#index">
+					<h1>Gorosvia's Java Practice</h1>
+				</a>
+				<p> Решения заданий курса java-программирования</p>
 			</div>
-		</div>
+			<div class="text-head">
+				<h2>Горошков Вячеслав, 3157гр.</h2>
+				<p></p>
+				<div>
+					<img src="static/img/avtr.jpg" class="left">
+					<p> </p>
+					<div class="left-clear"></div>
+				</div>
+				<p></p>
+				<p></p>
+				<h2>Краткое руководство к действию</h2>
+				<p> Здесь представлены примеры решённых заданий, доступных для тестирования. Описание каждого можно найти на странице с входными данными. Задание можно выбрать на плитках внизу экрана.</p>
 
 
-		<!-- Practice #5 - to 18.05.15 -->
-		<div class="block" align="center" id="WordLabForm">
-			<h2>WordLab</h2>
-			<form>
-				<input type="button" id="WordLabGetQuestion" value="Запросить вопрос">
-				<input type="button" id="WordLabBtnHide"     value="Скрыть!">
-				<input type="button" id="WordAnswerBtn"      value="Проверить!">
-			</form>
-		</div>
-
-		<div class="block" align="center" id="WordLabField">
-			<!-- Empty! -->
-		</div>
-
-		<!-- Empty! -->
-		<div class="block" align="center" id="StruLabForm">
-			<h2>Симулятор деканата (MVP)</h2>
-			<form>
-				<input type="button" id="StruLabBtnHide" value="Скрыть!">
-				<br>
-				<br>
-				<input type="text" id="StruLabDepName" placeholder="Фаукультет">
-				<input type="button" id="StruLabCreDep" value="Create department">
-				<br>
-				<br>
-				<input type="button" id="StruLabCallExams" value="Pass Exams">
-				<input type="button" id="StruLabKillStudents" value="Kill non-passers">
-				<input type="button" id="StruLabViewStats" value="View stats">
-			</form>
-		</div>
-
-		<div class="block" align="left" id="StruLabField">
-			<!-- Empty! -->
-		</div>
-
-
-		<!-- Practice #4 - to 28.04.15 -->
-		<div class="block" align="center" id="UniTableForm">
-			<h2>UnicodeTable</h2>
-			<form>
-				<input type="text" class="NumericInput" id="UniMin" placeholder="Номер первого символа" value="33222">
-				<input type="text" class="NumericInput" id="UniMax" placeholder="Номер второго символа" value="33333">
-				<input type="button" id="UniTableBtn"       value="Кратко">
-				<input type="button" id="UniTableBtnAdData" value="Подробно">
-				<input type="button" id="UniTableBtnHide"   value="Скрыть!">
-			</form>
-		</div>
-
-		<div class="block" align="center" id="UniTable">
-			<!-- Empty! -->
-		</div>
-
-
-		<div class="block" align="center" id="BudgetForm">
-			<h2>ListBudget</h2>
-			<form>
-				<input type="button" id="BuBtnAdd"   value="Добавить">
-				<input type="button" id="BuBtnCalc"  value="Рассчитать">
-				&nbsp;
-				<input type="button" id="BuBtnReset" value="Сбросить!">
-				<input type="button" id="BuBtnHide"  value="Скрыть!">
-			</form>
-			<ul id="BudgetList" align="left">
-				<li>
-					<input type="text" id="BuDesc0" placeholder="Статья">
-					&nbsp;
-					<input type="text" id="BudSum0" placeholder="Сумма">
-				</li>
-			</ul>
-		</div>
-
-		<div class="block" align="center" id="ListBudget">
-			<!-- Empty! -->
-		</div>
+			</div>
+			<div class="tiles">
+				<div class="tile"><a href="#files">
+					<div class="num">#6</div>
+					<u>Files</u>
+					<div class="desc left-clear">
+						Чтение CSV-файла и его преобразование в иерархию классов.
+					</div>
+				</a></div>
+				<div class="tile"><a href="#exceptions">
+					<div class="num">#5</div>
+					<u>Errors</u>
+					<div class="desc left-clear">
+						Система проверки вопросов на основе исключений.
+					</div>
+				</a></div>
+				<div class="tile"><a href="#classes">
+					<div class="num">#4</div>
+					<u>Classes</u>
+					<div class="desc left-clear">
+						Создание иерархической системы классов.
+					</div>
+				</a></div>
+				<div class="tile"><a href="#colors">
+					<div class="num">#L</div>
+					<u>Colors</u>
+					<div class="desc left-clear">
+						Вывод промежуточных цветовых значений между заданными.
+					</div>
+				</a></div>
+				<div class="tile"><a href="#tables">
+					<div class="num">#3</div>
+					<u>Tables</u>
+					<div class="desc left-clear">
+						Вывод таблиц и генерация данных.
+					</div>
+				</a></div>
+				<div class="tile"><a href="#arrays">
+					<div class="num">#2</div>
+					<u>Arrays</u>
+					<div class="desc left-clear">
+						Работа с форматами чисел и массивами.
+					</div>
+				</a></div>
+				<div class="tile"><a href="gmap.html">
+					<div class="num">#1</div>
+					<u>Map</u>
+					<div class="desc left-clear">
+						Пример внедрения Google-карты на страницу.
+					</div>
+				</a></div>
+				<div class="tile empty"></div>
+				<div class="tile empty"></div>
+				<div class="tile empty"></div>
+				<div class="tile empty"></div>
+			</div>
+		</header>
 
 
-		<!-- Colors - lab from lecture at 28.04.15 -->
-		<div class="block" align="center" id="ColorTableForm">
-			<h2>ColorPalette</h2>
-			<form>
-				<input type="text" class="NumericInput" id="ColorMin" placeholder="Номер первого символа" value="00FF00">
-				<input type="text" class="NumericInput" id="ColorMax" placeholder="Номер второго символа" value="00FF99">
-				<input type="button" id="ColorTableBtn"       value="Показать">
-				<input type="button" id="ColorTableBtnHide"   value="Скрыть!">
-			</form>
-		</div>
+		<div class="main">
 
-		<div class="block" align="center" id="ColorTable">
-			<!-- Empty! -->
-		</div>
+			<div class="task" id="index">
+				<div class="task-container" id="OpenData">
+					<div class="task-desc">
+						<h2>Empty!</h2>
+					</div>
+					<div class="task-desc changelog">
+						<h2>История изменений</h2>
+						<ul>
+							<li>
+								<b>09.06</b><br>
+								Added new sitepage
+								Added opendata task solve preview (only reading)
+								Bug fin id WordLab
+							</li>
+							<li>
+								<b>18.05</b><br>
+								Added exceptions task solve (WordLab)
+							</li>
+							<li>
+								<b>10.05</b><br>
+								Added Classes task solve<br>
+								Added GoogleMap task solve
+							</li>
+							<li>
+								<b>04.05</b><br>
+								Bug fix on BudgetList: incorrect scaling of the last cell
+							</li>
+							<li>
+								<b>28.04</b><br>
+								Bug fix on BudgetList: incorrect calculation of row height <br>
+								Added Color Table lab <br>
+								Added practice #3 tasks
+							</li>
+							<li>
+								<b>27.04</b><br>
+								Released tasks UnicodeTable and Budget for practice #4
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-		<!-- Practice #3 - to 07.04.15 -->
-		<div class="block" align="center" id="NearTenForm">
-			<h2>NearTen</h2>
-			<form>
-				<input type="text" class="NumericInput"  id="NearTenM" placeholder="M" value="5">
-				<input type="text" class="NumericInput"  id="NearTenN" placeholder="M" value="14">
-				<input type="button" id="NearTenBtn"     value="Запрос">
-				<input type="button" id="NearTenBtnHide" value="Скрыть!">
-			</form>
-		</div>
 
-		<div class="block" align="center" id="NearTenField">
-			<!-- Empty! -->
-		</div>
+			<!-- Practice #7 - to 09.06.15 -->
+			<div class="task" id="files">
+				<div class="task-container" id="OpenData">
+					<div class="task-desc">
+						<h2>Чтение CSV</h2>
+						<p> Пока сервлет не написан, но можно просмотреть лог чтения файла. </p>
+					</div>
+					<div class="task-form">
 
-		<div class="block" align="center" id="SquareRootsForm">
-			<h2>SquareRoots</h2>
-			<form>
-				<input type="text" class="NumericInput"  id="SquareRootsA" placeholder="A" value="2">
-				X<sup>2</sup> +
-				<input type="text" class="NumericInput"  id="SquareRootsB" placeholder="B" value="1">
-				X +
-				<input type="text" class="NumericInput"  id="SquareRootsC" placeholder="C" value="-1">
-				= 0
-				<input type="button" id="SquareRootsBtn"     value="Запрос">
-				<input type="button" id="SquareRootsBtnHide" value="Скрыть!">
-			</form>
-		</div>
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="button" id="OpenDataGetLog"  value="Лог!">
+								<input type="button" id="OpenDataBtnHide" value="Скрыть!">
+							</form>
+						</div>
 
-		<div class="block" align="center" id="SquareRootsField">
-			<!-- Empty! -->
-		</div>
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
 
-		<div class="block" align="center" id="RandomArrayForm">
-			<h2>RandomArrays</h2>
-			<form>
-				<input type="button" id="RandomArrayBtn"     value="Запрос 1">
-				<input type="button" id="RandomArrayBtn2"    value="Запрос 2">
-				<input type="button" id="RandomArrayBtnHide" value="Скрыть!">
-			</form>
-		</div>
+					</div>
+				</div>
+			</div>
 
-		<div class="block" align="center" id="RandomArrayField">
-			<!-- Empty! -->
-		</div>
 
-		<div class="block" align="center" id="GMapLink">
-			<a href="/gmap.html"><h2>GoogleMap</h2></a>
-		</div>
-		<br>
-	</div>
+			<!-- Practice #6 - to xx.05.15 -->
+			<div class="task" id="exceptions">
+				<div class="task-container" id="WordLab">
+					<div class="task-desc">
+						<h2>Вопросы и ответы</h2>
+						<p>Система выдаёт вопрос и ожидает сообщение решения, по результату проверки которого выводится сообщение о его корректности.</p>
+						<p>В качестве ответов поддерживаются типы Integer, Double и String.</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="button" id="WordLabGetQuestion" value="Запросить вопрос">
+								<input type="button" id="WordLabBtnHide"     value="Скрыть!">
+								<input type="button" id="WordAnswerBtn"      value="Проверить!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Practice #5 - to 11.05.15 -->
+			<div class="task" id="classes">
+				<div class="task-container" id="StruLab">
+					<div class="task-desc">
+						<h2>Симулятор деканата (MVP)</h2>
+						<p>Здесь представлен концепт системы для автоматизации работы деканата ИТМО =)</p>
+						<p>Можно создать именованный факультет, и для него будут созданы группы студентов, студенты и список экзаменов.</p>
+						<p>Инициировав сессию можно наблюдать за результатами прохождения испытаний, и впоследствии отчислить студентов, имеющих более 2-х задолженностей.</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="button" id="StruLabBtnHide" value="Скрыть!">
+								<br><br>
+								<input type="text"   id="StruLabDepName" placeholder="Фаукультет">
+								<input type="button" id="StruLabCreDep" value="Create department">
+								<br><br>
+								<input type="button" id="StruLabCallExams" value="Pass Exams">
+								<input type="button" id="StruLabKillStudents" value="Kill non-passers">
+								<input type="button" id="StruLabViewStats" value="View stats">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Practice #4 - to 28.04.15 -->
+			<div class="task" id="tables">
+				<div class="task-container" id="UniTable">
+					<div class="task-desc">
+						<h2>UnicodeTable</h2>
+						<p> <b>Входные данные:</b> десятичные номера начального и конечного символов.</p>
+						<p> В качестве ответа выводится список символов между заданными границами.</p>
+						<p> Первый режим выводит только символы, второй - символы и численное значение их кода.</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="text" class="NumericInput" id="UniMin" placeholder="Номер первого символа" value="33222">
+								<input type="text" class="NumericInput" id="UniMax" placeholder="Номер второго символа" value="33333">
+								<input type="button" id="UniTableBtn"       value="Кратко">
+								<input type="button" id="UniTableBtnAdData" value="Подробно">
+								<input type="button" id="UniTableBtnHide"   value="Скрыть!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+				<div class="task-container" id="ListBudget">
+					<div class="task-desc">
+						<h2>ListBudget</h2>
+						<p><b>Входные данные:</b> название статьи и её объем. Кнопкой "добавить" можно добавить ещё одну строку для ввода данных.</p>
+						<p>В качестве ответа выводится таблица с ячейками, пропорциональными сумме статьи с подписями и цветовой маркировкой.</p>
+						<p></p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="button" id="BuBtnAdd"   value="Добавить">
+								<input type="button" id="BuBtnCalc"  value="Рассчитать">
+								&nbsp;
+								<input type="button" id="BuBtnReset" value="Сбросить!">
+								<input type="button" id="BuBtnHide"  value="Скрыть!">
+
+							<ul id="BudgetList">
+								<li>
+									<input type="text" id="BuDesc0" placeholder="Статья">
+									&nbsp;
+									<input type="text" id="BudSum0" placeholder="Сумма">
+								</li>
+							</ul>
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Colors - lab from lecture at 28.04.15 -->
+			<div class="task" id="colors">
+				<div class="task-container" id="ColorTable">
+					<div class="task-desc">
+						<h2>ColorPalette</h2>
+						<p><b>Входные данные:</b> начальный и конечный коды цветов в шестнадцатеричном формате (8 бит на канал).</p>
+						<p>В качестве ответа выводит список из 16 промежуточных цветовых значенй, взятых через равные промежутки.</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="text" class="NumericInput" id="ColorMin" placeholder="Номер первого символа" value="00FF00">
+								<input type="text" class="NumericInput" id="ColorMax" placeholder="Номер второго символа" value="00FF99">
+								<input type="button" id="ColorTableBtn"       value="Показать">
+								<input type="button" id="ColorTableBtnHide"   value="Скрыть!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Practice #3 - to 07.04.15 -->
+			<div class="task" id="arrays">
+				<div class="task-container" id="NearTen">
+					<div class="task-desc">
+						<h2>NearTen</h2>
+						<p><b>Входные данные:</b> два числа в формате с плавающей точкой.</p>
+						<p>В качестве ответа выводится ближайшее к 10 из них (по модулю).</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="text" class="NumericInput"  id="NearTenM" placeholder="M" value="5">
+								<input type="text" class="NumericInput"  id="NearTenN" placeholder="M" value="14">
+								<input type="button" id="NearTenBtn"     value="Запрос">
+								<input type="button" id="NearTenBtnHide" value="Скрыть!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+				<div class="task-container" id="SquareRoots">
+					<div class="task-desc">
+						<h2>SquareRoots</h2>
+						<p><b>Входные данные:</b> коэффициенты квадратного уравнения.</p>
+						<p>В качестве ответа выводятся корни уравнения (при их наличии).</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="text" class="NumericInput"  id="SquareRootsA" placeholder="A" value="2">
+								X<sup>2</sup> +
+								<input type="text" class="NumericInput"  id="SquareRootsB" placeholder="B" value="1">
+								X +
+								<input type="text" class="NumericInput"  id="SquareRootsC" placeholder="C" value="-1">
+								= 0
+								<input type="button" id="SquareRootsBtn"     value="Запрос">
+								<input type="button" id="SquareRootsBtnHide" value="Скрыть!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+				<div class="task-container" id="RandomArrays">
+					<div class="task-desc">
+						<h2>RandomArrays</h2>
+						<p>В качестве ответа выводятся массивы случайных чисел в диапазоне от 0 до 90 или от -99 до 99.</p>
+					</div>
+					<div class="task-form">
+
+						<div class="block">
+							<h2>Входные данные</h2>
+							<form>
+								<input type="button" id="RandomArrayBtn"     value="Запрос 1">
+								<input type="button" id="RandomArrayBtn2"    value="Запрос 2">
+								<input type="button" id="RandomArrayBtnHide" value="Скрыть!">
+							</form>
+						</div>
+
+						<div class="block response">
+						<!-- Empty! -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div><!-- .main -->
+
+		<footer>
+			<div>(c) GorosVia'15</div>
+		</footer>
+
 	</body>
-
-
-
 </html>
