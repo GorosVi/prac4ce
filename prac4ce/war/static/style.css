@@ -19,7 +19,8 @@ header{
 	justify-content:center;
 	align-items: flex-start;
 	flex-wrap: wrap;
-	background: url("img/new-york-city-skyline-vector.svgz") center no-repeat,
+	/* AppEngine don't send content-encoding header to use svgz */
+	background: url("img/new-york-city-skyline-vector.svg") center no-repeat,
 	            url("img/backgroundCells.png") repeat,
 	            #FEFFD3;
 }
