@@ -3,7 +3,6 @@
 body{
 	margin: 0;
 	padding: 0;
-	/*background-color: #FDD;*/
 	font-family: 'Arimo';
 }
 
@@ -12,7 +11,6 @@ h1,h2,h3,h4,h5,h6{
 }
 
 header{
-	/*background: url(../static/img/texture.png) repeat-y;*/
 	width:100%;
 	min-height: 100vh;
 	padding-bottom: 4vh;
@@ -21,15 +19,14 @@ header{
 	justify-content:center;
 	align-items: flex-start;
 	flex-wrap: wrap;
-	background-color: #FEFFD3;
-	background-repeat: repeat;
-	background-image: url("img/backgroundCells.png");
+	background: url("img/new-york-city-skyline-vector.svgz") center no-repeat,
+	            url("img/backgroundCells.png") repeat,
+	            #FEFFD3;
 }
 .heading{
 	/* Top Right Bot Left */
 	min-width: 250px;
 	margin: 1%;
-	/*border: #299E3F 1px solid;*/
 }
 .heading a{
 	text-decoration: none;
@@ -39,18 +36,23 @@ header{
 	display: inline-block;
 	border-bottom: #000 2px solid;
 }
+.heading div{
+	text-align: center;
+}
+.heading img{
+	border: solid  1px #FDFEA8;
+	border-radius: 50%;
+	box-shadow: 0 0 3pt 2pt #D0D247;
+	margin: 4vh auto;
+}
+
 .text-head{
 	width: 50%;
 	min-width: 300px;
 	margin: 1%;
 	margin-left: 40px;
 	margin-right: 0px;
-	/*border: #299E3F 1px solid;*/
 }
-.text-head img{
-	border-radius: 50%;
-}
-
 .main{
 	min-height: 100vh;
 	margin-bottom: 80px;
@@ -58,25 +60,24 @@ header{
 	background-repeat: repeat;
 	background-image: url("img/backgroundCells.png");
 	padding-bottom: 4vh;
-	border-bottom: solid 7px #88CE8D;
+	border-bottom: solid 7px #83C687;
 }
 .tiles{
 	width:100%;
 	margin-top: auto;
 	padding: 2vh;
+	padding-top: 0;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	/*background-color: inherit;*/
-	/*border-top: solid 7px #9FC061;*/
 }
 .tile{
 	width: 13%;
 	height: 20vh;
-	min-height: 100px;
-	min-width: 100px;
+	min-height: 150px;
+	min-width: 180px;
 	margin: 0px;
-	margin-top: 3px;
+	margin-top: 20px;
 	padding: 0px;
 	background-color: #E6FBBD;
 	border: solid 1px #B9DC77;
@@ -93,7 +94,6 @@ header{
 	margin-left: -10px;
 	margin-top: -11px;
 	margin-right: 10px;
-
 }
 
 .tile a{
@@ -102,17 +102,17 @@ header{
 	min-height: 20vh;
 	padding: 20px;
 	padding-top: 13px;
-	font-size: 1ex;
 	margin: 0;
 	display: block;
 	text-decoration: none;
+	font-size: 20pt;
 }
 
 .tile .desc{
-	font-family: 'Calibri';
+	font-family: 'Arimo';
 	display: block;
 	color: #406200;
-	font-size: 1.5ex;
+	font-size: 1.1ex;
 	text-align: left;
 	padding-top: 1ex;
 	width: 100%;
@@ -143,7 +143,6 @@ header{
 	width: 60%;
 	min-width: 300px;
 	max-width: 700px;
-	/* Top Right Bot Left */
 	margin: 15px;
 	padding: 20px;
 	padding-top: 0px;
@@ -170,7 +169,7 @@ footer{
 	background-color: #CBEBCD;
 	font-family: 'ZionTrain';
 	font-size: 30px;
-	color: #44A34A;
+	color: #7EBF81;
 	text-align: center;
 }
 footer div{
@@ -241,6 +240,7 @@ footer div{
 	margin: 5px;
 	padding: 5px;
 	float: left;
+	overflow: hidden;
 }
 .block-item-big{
 	width: 50px;
@@ -248,6 +248,7 @@ footer div{
 	margin: 5px;
 	padding: 5px;
 	float: left;
+	overflow: hidden;
 }
 .block-clear{
 	clear: left;
@@ -265,10 +266,10 @@ footer div{
 	text-align: left;
 }
 
-#ColorTable .block.response > sub{
-	padding: 1px;
+#ColorTable .block.response sub{
 	font-size: 8pt;
 	background-color: #AEFD8C;
+	border: solid 1px #99DB7A;
 }
 #ListBudget  ul{
 	list-style-type: decimal;
@@ -294,10 +295,4 @@ footer div{
 
 #RandomArrays .block.response > div{
 	display: inline-block;
-}
-
-
-
-.tile a{
-	font-size: 20pt;
 }

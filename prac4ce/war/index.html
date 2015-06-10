@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="static/style.css">
 		<script type="text/javascript" src="static/jquery-2.1.3.min.js"></script>
 		<script type="text/javascript" src="static/jquery-index-bind.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 		<title>Java Practice</title>
 	</head>
 
@@ -17,20 +18,22 @@
 					<h1>Gorosvia's Java Practice</h1>
 				</a>
 				<p> Решения заданий курса java-программирования</p>
+				<div>
+					<img src="static/img/avtr.jpg" alt="Аватар">
+				</div>
 			</div>
 			<div class="text-head">
-				<h2>Горошков Вячеслав, 3157гр.</h2>
-				<p></p>
-				<div>
-					<img src="static/img/avtr.jpg" class="left">
-					<p> </p>
-					<div class="left-clear"></div>
-				</div>
-				<p></p>
-				<p></p>
-				<h2>Краткое руководство к действию</h2>
-				<p> Здесь представлены примеры решённых заданий, доступных для тестирования. Описание каждого можно найти на странице с входными данными. Задание можно выбрать на плитках внизу экрана.</p>
+				<h2>Вместо предисловия</h2>
+				<p> Мой вариант презентации заданий состоит из одной страницы, хотя она поддерживает
+				    обращение, типичное для многостраничной компоновки. Как всегда, страничка была сделана
+				    в спешке, и не всё отточено как надо. Но то, что должно работать - работает хорошо.
+				    Вёрстка претендует на некоторую адаптивность, так как спроектирована как для мониторов 1920p,
+				    так и для разрешений порядка 1024x600.</p>
 
+				<h2>Краткое руководство к действию</h2>
+				<p> Ниже представлены примеры решённых заданий, доступных для тестирования. Описание каждого можно найти на странице с входными данными. Задание можно выбрать на плитках внизу экрана.</p>
+				<p> Также, все задания вместе можно увидеть на <a href="#dash">Dashboard</a>'е.</p>
+				<p> Дополнительная иноформация <a href="#index">ниже</a>.</p>
 
 			</div>
 			<div class="tiles">
@@ -87,6 +90,7 @@
 				<div class="tile empty"></div>
 				<div class="tile empty"></div>
 				<div class="tile empty"></div>
+				<div class="tile empty"></div>
 			</div>
 		</header>
 
@@ -96,16 +100,24 @@
 			<div class="task" id="index">
 				<div class="task-container" id="OpenData">
 					<div class="task-desc">
-						<h2>Empty!</h2>
+						<h2>Выполнил: Горошков Вячеслав, студент 3157гр.</h2>
+						<p>Результат работы находится в открытом доступе на <a href="https://github.com/gorosvia/prac4ce">github</a> под лицензией GPLv3 (кроме графики и шрифтов, имеющих свои лицензии).</p>
+						<p>Вместо контактной информации предлагаю её поискать (имеющихся данных
+						    вполне для этого достаточно =), хотя обычно она уже и не нужна.</p>
 					</div>
 					<div class="task-desc changelog">
 						<h2>История изменений</h2>
 						<ul>
 							<li>
+								<b>10.06</b><br>
+								Sitepage updated <br>
+								Fixed transmission of the space-containing params <br>
+							</li>
+							<li>
 								<b>09.06</b><br>
-								Added new sitepage
-								Added opendata task solve preview (only reading)
-								Bug fin id WordLab
+								Added new sitepage <br>
+								Added opendata task solve preview (only reading) <br>
+								Bug fix in WordLab <br>
 							</li>
 							<li>
 								<b>18.05</b><br>
@@ -293,7 +305,7 @@
 				<div class="task-container" id="ColorTable">
 					<div class="task-desc">
 						<h2>ColorPalette</h2>
-						<p><b>Входные данные:</b> начальный и конечный коды цветов в шестнадцатеричном формате (8 бит на канал).</p>
+						<p><b>Входные данные:</b> начальный и конечный коды цветов в шестнадцатиричном формате (8 бит на канал).</p>
 						<p>В качестве ответа выводит список из 16 промежуточных цветовых значенй, взятых через равные промежутки.</p>
 					</div>
 					<div class="task-form">
