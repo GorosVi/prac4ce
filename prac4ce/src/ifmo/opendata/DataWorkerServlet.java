@@ -20,28 +20,28 @@ public class DataWorkerServlet extends HttpServlet{
 		if (columns > 7) 
 			resp.getWriter().println("<td>"+cRestr.getDisposalNum()+"</td>");
 		if (columns > 1) 
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'wiev=restriction&param="+cRestr.getCode()+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'wiev=restriction&param="+cRestr.getCode()+"\')\" href=\"#files\">"
 					+ cRestr.getAddress()+"</a></td>");
 		if (columns > 2) 
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'wiev=district&param="+cRestr.getDistrict().getName()+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'wiev=district&param="+cRestr.getDistrict().getName()+"\')\" href=\"#files\">"
 			                         + cRestr.getDistrict().getName() +"</a></td>");
 		if (columns > 3){
 			Date cDate = cRestr.getDateStart();
 			SimpleDateFormat restDF = new SimpleDateFormat("dd.MM.yyyy");
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'select=date&param="+restDF.format(cDate)+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'select=date&param="+restDF.format(cDate)+"\')\" href=\"#files\">"
 					+ restDF.format(cDate)+"</a></td>");
 		}
 		if (columns > 4){
 			Date cDate = cRestr.getDateEnd();
 			SimpleDateFormat restDF = new SimpleDateFormat("dd.MM.yyyy");
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'select=date&param="+restDF.format(cDate)+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'select=date&param="+restDF.format(cDate)+"\')\" href=\"#files\">"
 					+ restDF.format(cDate)+"</a></td>");
 		}
 		if (columns > 5 && cRestr.getContractor()!=null&& cRestr.getContractor().getName()!=null) 
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'wiev=company&param="+cRestr.getContractor().getINN()+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'wiev=company&param="+cRestr.getContractor().getINN()+"\')\" href=\"#files\">"
 					+ cRestr.getContractor().getName() +"</a></td>");
 		if (columns > 6 && cRestr.getConsumer()!=null&& cRestr.getConsumer().getName()!=null) 
-			resp.getWriter().println("<td><a onclick=\"openDataUpdate(\'wiev=company&param="+cRestr.getConsumer().getINN()+"\')\" href=\"#files\">"
+			resp.getWriter().println("<td><a onclick=\"return openDataUpdate(\'wiev=company&param="+cRestr.getConsumer().getINN()+"\')\" href=\"#files\">"
 				+ cRestr.getConsumer().getName() +"</a></td>");
 		if (columns > 8) 
 				resp.getWriter().println("<td>"+cRestr.getCode() +"</td>");
@@ -161,7 +161,7 @@ public class DataWorkerServlet extends HttpServlet{
 						resp.getWriter().println("<h3>Компания: "+wrkCom.getName()+"</h3>");
 						resp.getWriter().println("ИНН: "+wrkCom.getINN()+"<br>");
 						resp.getWriter().println("Всего объектов: "+(wrkCom.getAsContractorList().size()+wrkCom.getAsCustomerList().size())+"<br>");
-						resp.getWriter().println("<a  onclick=\"openDataUpdate(\'select=company&param="+wrkCom.getINN()+"\')\" href=\"#files\">"
+						resp.getWriter().println("<a  onclick=\"return openDataUpdate(\'select=company&param="+wrkCom.getINN()+"\')\" href=\"#files\">"
 								+ "Список объектов </a>");
 					} else
 						resp.getWriter().println("Ошибка: компании нет в списке.");
@@ -176,7 +176,7 @@ public class DataWorkerServlet extends HttpServlet{
 
 						resp.getWriter().println("<h3>Район: "+wrkDistr.getName()+"</h3>");
 						resp.getWriter().println("Всего объектов: "+ wrkDistr.getRestList().size() +"<br>");
-						resp.getWriter().println("<a  onclick=\"openDataUpdate(\'select=district&param="+wrkDistr.getName()+"\')\" href=\"#files\">"
+						resp.getWriter().println("<a  onclick=\"return openDataUpdate(\'select=district&param="+wrkDistr.getName()+"\')\" href=\"#files\">"
 								+ "Список объектов </a>");
 					} else
 						resp.getWriter().println("Ошибка: района нет в списке.");
@@ -213,14 +213,14 @@ public class DataWorkerServlet extends HttpServlet{
 			if (listBy.equals("company")){
 				ArrayList<Company> comList = dataContainer.getCompanyList();
 				for (int i = 0; i < comList.size(); i++)
-					resp.getWriter().println("<a  onclick=\"openDataUpdate(\'wiev=company&param="
+					resp.getWriter().println("<a  onclick=\"return openDataUpdate(\'wiev=company&param="
 							+comList.get(i).getINN() +"\')\" href=\"#files\">"+ comList.get(i).getName() +
 							"</a><br>");
 			}
 			if (listBy.equals("district")){
 				ArrayList<District> distList = dataContainer.getDistrictList();
 				for (int i = 0; i < distList.size(); i++)
-					resp.getWriter().println("<a  onclick=\"openDataUpdate(\'wiev=district&param="
+					resp.getWriter().println("<a  onclick=\"return openDataUpdate(\'wiev=district&param="
 							+distList.get(i).getName() +"\')\" href=\"#files\">"+ distList.get(i).getName() +
 							"</a><br>");
 			}
