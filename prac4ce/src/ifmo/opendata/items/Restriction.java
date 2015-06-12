@@ -17,7 +17,7 @@ public class Restriction {
 		// not complete
 		return true;
 	}
-			
+	
 	public void setDistrict(District trgtDistrict){
 		district = trgtDistrict;
 	}

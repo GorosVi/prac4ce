@@ -90,11 +90,10 @@ header{
 .tile .num{
 	float: left;
 	font-family: 'ZionTrain';
-	font-size: 6vh;
+	font-size: 5vh;
 	color: #B3D374; /*9FC061*/
 	margin-left: -10px;
-	margin-top: -11px;
-	margin-right: 10px;
+	margin-top: -8px;
 }
 
 .tile a{
@@ -102,7 +101,7 @@ header{
 	color: #406200;
 	min-height: 20vh;
 	padding: 20px;
-	padding-top: 13px;
+	padding-top: 10px;
 	margin: 0;
 	display: block;
 	text-decoration: none;
@@ -115,7 +114,6 @@ header{
 	color: #406200;
 	font-size: 1.1ex;
 	text-align: left;
-	padding-top: 1ex;
 	width: 100%;
 }
 
@@ -142,7 +140,7 @@ header{
 }
 .task-desc{
 	width: 60%;
-	min-width: 300px;
+	min-width: 540px;
 	max-width: 700px;
 	margin: 15px;
 	padding: 20px;
@@ -296,4 +294,32 @@ footer div{
 
 #RandomArrays .block.response > div{
 	display: inline-block;
+}
+
+#StruLab .block+.block{
+	text-align: left;
+}
+
+#OpenData .block{
+	width: 800px;
+	max-width: 800px;
+	min-width: 800px;
+}
+#OpenData .block+.block{
+	overflow-x: scroll;
+}
+#OpenData .block table{
+	border-collapse: collapse;
+}
+#OpenData .block tr{
+	background-color: #BAE46B;
+}
+#OpenData .block tr+tr{
+	background-color: inherit;
+}
+#OpenData .block td{
+	margin: 0;
+	padding: 7px;
+	border: #299E3F 1px solid;
+	text-align: left;
 }

@@ -31,7 +31,7 @@
 				    так и для разрешений порядка 1024x600.</p>
 
 				<h2>Краткое руководство к действию</h2>
-				<p> Ниже представлены примеры решённых заданий, доступных для тестирования. Описание каждого можно найти на странице с входными данными. Задание можно выбрать на плитках внизу экрана.</p>
+				<p> Ниже представлены примеры решённых заданий, доступных для тестирования. Описание каждого - на странице с входными данными. Задание можно выбрать на плитках внизу экрана.</p>
 				<p> Также, все задания вместе можно увидеть на <a href="#dash">Dashboard</a>'е.</p>
 				<p> Дополнительная иноформация <a href="#index">ниже</a>.</p>
 
@@ -91,6 +91,7 @@
 				<div class="tile empty"></div>
 				<div class="tile empty"></div>
 				<div class="tile empty"></div>
+				<div class="tile empty"></div>
 			</div>
 		</header>
 
@@ -108,6 +109,10 @@
 					<div class="task-desc changelog">
 						<h2>История изменений</h2>
 						<ul>
+							<li>
+								<b>12.06</b><br>
+								Added complete solve of opendata task<br>
+							</li>
 							<li>
 								<b>10.06</b><br>
 								Sitepage updated <br>
@@ -153,15 +158,24 @@
 				<div class="task-container" id="OpenData">
 					<div class="task-desc">
 						<h2>Чтение CSV</h2>
-						<p> Пока сервлет не написан, но можно просмотреть лог чтения файла. </p>
+						<p> Сервлет выполняет чтение из структуры датасета об <a href="http://data.gov.spb.ru/datasets/10/">ограничениях дорожного движения</a>, считываемом при первом обращении к нему.</p>
+						<p> Из функционала доступны: поиск по улице (по соответствию), поиск активных ограничений на дату и промотр списков организаций и событий по районам. По ссылкам в таблице загружается дополнительная информация в зависимости от контекста объекта.</p>
+
 					</div>
 					<div class="task-form">
 
 						<div class="block">
 							<h2>Входные данные</h2>
 							<form>
-								<input type="button" id="OpenDataGetLog"  value="Лог!">
-								<input type="button" id="OpenDataBtnHide" value="Скрыть!">
+								<input type="text"   id="OpenDataSelect" placeholder="Поиск...">
+								<input type="button" id="OpenDataBtnSelectAddress"   value="Адрес">
+								<input type="button" id="OpenDataBtnSelectDate"      value="Дата">
+								<input type="button" id="OpenDataBtnHide"            value="Скрыть!">
+								<br><br>
+								<input type="button" id="OpenDataBtnListDistrict"    value="Список районов">
+								<input type="button" id="OpenDataBtnListCompany"     value="Список организаций">
+								<input type="button" id="OpenDataBtnListRestriction" value="Все события">
+								<input type="button" id="OpenDataBtnGetLog"          value="Лог">
 							</form>
 						</div>
 

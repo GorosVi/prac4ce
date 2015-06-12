@@ -1,13 +1,36 @@
+function openDataUpdate(str){
+	$('#OpenData .block + .response').load( "/opendata?"+encodeURI(str) );
+	return false;
+};
+
 $(document).ready(function() {
 
 	/* Practice #7 - to 09.06.15 */
 
+	$('#OpenDataBtnSelectAddress').on('click',function(){
+		$('#OpenData .block + .response').load("/opendata?select=address&"+encodeURI(
+		                                        "param="+$("#OpenDataSelect").val()));
+	});
+	$('#OpenDataBtnSelectDate').on('click',function(){
+		$('#OpenData .block + .response').load("/opendata?select=date&"+encodeURI(
+		                                        "param="+$("#OpenDataSelect").val()));
+	});
+
+	$('#OpenDataBtnListDistrict').on('click',function(){
+		$('#OpenData .block + .response').load( "/opendata?list=district");
+	});
+	$('#OpenDataBtnListCompany').on('click',function(){
+		$('#OpenData .block + .response').load( "/opendata?list=company");
+	});
+	$('#OpenDataBtnListRestriction').on('click',function(){
+		$('#OpenData .block + .response').load( "/opendata?list=restriction");
+	});
+
+	$('#OpenDataBtnGetLog').on('click',function(){
+		$('#OpenData .block + .response').load( "/opendata?log");
+	});
 	$('#OpenDataBtnHide').on('click',function(){
 		$('#OpenData .block + .response').html("");
-	});
-	$('#OpenDataGetLog').on('click',function(){
-		$('#OpenData .block + .response').load( encodeURI("/opendata?"+
-		                                        "answer="+$("#WordAnswer").val()));
 	});
 
 	/* Practice #6 - to xx.05.15 */
@@ -19,8 +42,8 @@ $(document).ready(function() {
 		$('#WordLab .block + .response').load( "/wordlab");
 	});
 	$('#WordAnswerBtn').on('click',function(){
-		$('#WordLab .block + .response').load( encodeURI("/wordlab?"+
-		                                        "answer="+$("#WordAnswer").val()));
+		$('#WordLab .block + .response').load( "/wordlab?"+encodeURI(
+		                                       "answer="+$("#WordAnswer").val()));
 	});
 
 
@@ -39,7 +62,7 @@ $(document).ready(function() {
 		$('#StruLab .block + .response').load( "/structlab?action=3");
 	});
 	$('#StruLabCreDep').on('click',function(){
-		$('#StruLab .block + .response').load( encodeURI("/structlab?action=0"+
+		$('#StruLab .block + .response').load("/structlab?action=0"+encodeURI(
 		                         "&dname="+$("#StruLabDepName").val()));
 	});
 
@@ -47,12 +70,12 @@ $(document).ready(function() {
 	/* Practice #4 - to 28.04.15 */
 
 	$('#UniTableBtn').on('click',function(){
-		$('#UniTable .block + .response').load( encodeURI("/unitable?"+
+		$('#UniTable .block + .response').load( "/unitable?"+encodeURI(
 		                      "min="+$("#UniMin").val()+
 		                     "&max="+$("#UniMax").val()));
 	});
 	$('#UniTableBtnAdData').on('click',function(){
-		$('#UniTable .block + .response').load( encodeURI("/unitable?"+
+		$('#UniTable .block + .response').load( "/unitable?"+encodeURI(
 		                      "min="+$("#UniMin").val()+
 		                     "&max="+$("#UniMax").val()+
 		                     "&extmode=true"));
@@ -98,7 +121,7 @@ $(document).ready(function() {
 	/*  Colors - lab from lecture at 28.04.15 */
 
 	$('#ColorTableBtn').on('click',function(){
-		$('#ColorTable .block + .response').load( encodeURI("/colortable?"+
+		$('#ColorTable .block + .response').load("/colortable?"+ encodeURI(
 		                      "min="+$("#ColorMin").val()+
 		                     "&max="+$("#ColorMax").val()));
 	});
@@ -110,7 +133,7 @@ $(document).ready(function() {
 	/* Practice #3 - to 07.04.15 */
 
 	$('#NearTenBtn').on('click',function(){
-		$('#NearTen .block + .response').load( encodeURI("/nearten?"+
+		$('#NearTen .block + .response').load( "/nearten?"+encodeURI(
 		                         "M="+$("#NearTenM").val()+
 		                        "&N="+$("#NearTenN").val()));
 	});
@@ -121,7 +144,7 @@ $(document).ready(function() {
 
 
 	$('#SquareRootsBtn').on('click',function(){
-		$('#SquareRoots .block + .response').load( encodeURI("/squaroots?"+
+		$('#SquareRoots .block + .response').load( "/squaroots?"+encodeURI(
 		                         "A="+$("#SquareRootsA").val()+
 		                        "&B="+$("#SquareRootsB").val()+
 		                        "&C="+$("#SquareRootsC").val()));

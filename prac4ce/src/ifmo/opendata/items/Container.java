@@ -1,7 +1,8 @@
 package ifmo.opendata.items;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class Container {
 		CSVReader cReader = null;
 		try{
 			String[] nextLine;
-			cReader = new CSVReader(new FileReader(filename));
+			cReader = new CSVReader(new InputStreamReader(new FileInputStream(filename), "utf-8"));
 			// Bypass first line
 			cReader.readNext();
 			while ((nextLine = cReader.readNext()) != null) {
@@ -71,7 +72,7 @@ public class Container {
 					index = findCompany(Long.parseLong(nextLine[6]));
 					if (index >= 0){
 						if (debug && !nextLine[5].equals(companyList.get(index).getName())) log += "Warning: different names for INN at ID "+ nextLine[0] +" \n";
-						cuRestr.setContractor((companyList.get(index).attachAsContractor(cuRestr)));
+						cuRestr.setContractor(companyList.get(index).attachAsContractor(cuRestr));
 					}
 					else{
 						//if (debug) log += "Company <"+ nextLine[5] +"> added. \n";
@@ -85,13 +86,13 @@ public class Container {
 					index = findCompany(Long.parseLong(nextLine[8]));
 					if (index >= 0){
 						if (debug && !nextLine[7].equals(companyList.get(index).getName())) log += "Warning: different names for INN at ID "+ nextLine[0] +" \n";
-						cuRestr.setContractor((companyList.get(index).attachAsContractor(cuRestr)));
+						cuRestr.setConsumer(companyList.get(index).attachAsCustomer(cuRestr));
 					}
 					else{
 						//if (debug) log += "Company <"+ nextLine[7] +"> added. \n";
 						Company curCompany = new Company(nextLine[7],Long.parseLong(nextLine[8]));
 						companyList.add(curCompany);
-						cuRestr.setContractor(curCompany.attachAsContractor(cuRestr));
+						cuRestr.setConsumer(curCompany.attachAsCustomer(cuRestr));
 					};
 					
 					restrList.add(cuRestr);
@@ -135,6 +136,13 @@ public class Container {
 	}
 		
 	
+	public int findRestriction(int Code){
+		for (int i = restrList.size()-1; i >= 0; i--)
+			if (restrList.get(i).getCode() == Code)
+				return i;
+		return -1;
+	}
+
 	public int findRestrType(String restrTypeDesc){
 		for (int i = restrTypeList.size()-1; i >= 0; i--)
 			if (restrTypeList.get(i).getName().equals(restrTypeDesc))
@@ -142,9 +150,9 @@ public class Container {
 		return -1;
 	}
 	
-	public int findDistrict(String DiscrName){
+	public int findDistrict(String distrName){
 		for (int i = distrList.size()-1; i >= 0; i--)
-			if (distrList.get(i).getName().equals(DiscrName))
+			if (distrList.get(i).getName().equals(distrName))
 				return i;
 		return -1;
 	}
